@@ -37,7 +37,7 @@ body::before{--size:45px;--line:color-mix(in lch,canvasText,transparent 70%);con
 .clock label:nth-child(16):after{transform:rotate(127deg) translate(-50px, -6px)}
 .clock label span,.indicator::before{text-transform:uppercase;}
 .clock label span{display:inline-block;font-size:18px;font-weight:600;color:var(--black-color);transform:rotate(calc(var(--i) * (-360deg / 24)))}
-.clock label p{color:var(--text-color);font-size:18px;font-weight:600;position:relative;display:block;inset:335px;text-transform:uppercase;letter-spacing:1px;transform:rotate(-82deg);left:-9px;text-align:right}
+.clock label p{color:var(--text-color);font-family:sans-serif;font-size:18px;font-weight:600;position:relative;display:block;inset:335px;text-transform:uppercase;letter-spacing:1px;transform:rotate(-82deg);left:-9px;text-align:right}
 .clock label:nth-child(2) p{position:absolute;font-size:28px;font-weight:600;transform:rotate(-30deg);right:180px;top:168px}
 .clock label:nth-child(5) p{font-size:18px}
 .clock label:nth-child(19) p{font-size:28px}
