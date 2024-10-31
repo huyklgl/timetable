@@ -25,7 +25,17 @@ const clockLabels=[
 {hour:24,text:''}];function initializeClock(){const clockElement=document.querySelector('.clock');const indicatorElement=document.querySelector('.indicator');clockLabels.forEach(label=>{const labelElement=document.createElement('label');labelElement.style.setProperty('--i',label.hour);const spanElement=document.createElement('span');spanElement.textContent=label.hour;labelElement.appendChild(spanElement);if(label.text){const pElement=document.createElement('p');pElement.textContent=label.text;labelElement.appendChild(pElement)}
 clockElement.insertBefore(labelElement,indicatorElement)})}
 const hourHand=document.querySelector(".hand.hour");const minuteHand=document.querySelector(".hand.minute");const secondHand=document.querySelector(".hand.second");const indicator=document.querySelector(".indicator");let isSpinning=!1;let clockDisabled=!1;let currentTime;const spinningSound=new Audio('//github.com/tranbinh02/STORAGE_BOX/raw/main/spin.mp3');const luckySpinSound=new Audio('//github.com/tranbinh02/STORAGE_BOX/raw/main/clap.mp3');function updateClockHands(){if(clockDisabled)return;const secToDeg=(currentTime.seconds/60)*360;const minToDeg=((currentTime.minutes*60+currentTime.seconds)/3600)*360;const hrToDeg=((currentTime.hours%12*3600+currentTime.minutes*60+currentTime.seconds)/43200)*360;secondHand.style.transform=`rotate(${secToDeg}deg)`;minuteHand.style.transform=`rotate(${minToDeg}deg)`;hourHand.style.transform=`rotate(${hrToDeg}deg)`}
-function updateTime(){const now=new Date();currentTime={hours:now.getHours(),minutes:now.getMinutes(),seconds:now.getSeconds()};updateClockHands()}
+function updateTime(){    const now = new Date();
+    const utcOffset = 7 * 60; // Múi giờ UTC+7
+    const localTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60 * 1000) + (utcOffset * 60 * 1000));
+
+    currentTime = {
+        hours: localTime.getHours(),
+        minutes: localTime.getMinutes(),
+        seconds: localTime.getSeconds()
+    };
+
+    updateClockHands();}
 function startClock(){updateTime();if(!clockDisabled){requestAnimationFrame(clockTick)}}
 function clockTick(timestamp){if(clockDisabled)return;updateTime();requestAnimationFrame(clockTick)}
 function disableClock(){clockDisabled=!0;minuteHand.style.display='none';secondHand.style.display='none'}
