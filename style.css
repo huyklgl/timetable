@@ -1,111 +1,137 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-::-webkit-scrollbar{display:none}
-:root{--primary-color:#f6f7fb;--white-color:#fff;--black-color:#18191a;--red-color:#ff9f0a;--border:550px;--wh:68px}
-[data-theme=light]{--line:hsl(0 0% 10% / 0.15);color-scheme:light only;background:hsl(0 0% 98%);--black-color:#000;--text-color:#000}
-[data-theme=dark]{--line:hsl(0 0% 90% / 0.15);color-scheme:dark only;background:hsl(0 0% 2%);--black-color:#000;--text-color:#000}
-[aria-pressed]{position:fixed;top:1rem;right:1rem;width:48px;aspect-ratio:1;display:grid;place-items:center;padding:0;border:0;background:transparent;cursor:pointer;border-radius:6px}
-button::after{content:"";position:absolute;inset:0;border-radius:6px;background:hsl(0 0% 50% / 0.25);opacity:var(--intent,0);transition:opacity .2s}
-button:is(:hover,:focus-visible){--intent:1}
-[aria-pressed] svg{width:50%}
-[aria-pressed=true] path:first-of-type,[aria-pressed=false] path:last-of-type{display:none}@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-::-webkit-scrollbar{display:none}
-:root{--primary-color:#f6f7fb;--white-color:#fff;--black-color:#18191a;--red-color:#ff9f0a;--border:550px;--wh:68px}
-[data-theme=light]{--line:hsl(0 0% 10% / 0.15);color-scheme:light only;background:hsl(0 0% 98%);--black-color:#000;--text-color:#000}
-[data-theme=dark]{--line:hsl(0 0% 90% / 0.15);color-scheme:dark only;background:hsl(0 0% 2%);--black-color:#000;--text-color:#000}
-[aria-pressed]{position:fixed;top:1rem;right:1rem;width:48px;aspect-ratio:1;display:grid;place-items:center;padding:0;border:0;background:transparent;cursor:pointer;border-radius:6px}
-button::after{content:"";position:absolute;inset:0;border-radius:6px;background:hsl(0 0% 50% / 0.25);opacity:var(--intent,0);transition:opacity .2s}
-button:is(:hover,:focus-visible){--intent:1}
-[aria-pressed] svg{width:50%}
-[aria-pressed=true] path:first-of-type,[aria-pressed=false] path:last-of-type{display:none}
-[aria-pressed=false] path:first-of-type,[aria-pressed=true] path:last-of-type{display:block}
-::view-transition-old(root){z-index:-1;-webkit-animation:none;animation:none}
-::view-transition-new(root){z-index:2;-webkit-animation:unclip 1s both;animation:unclip 1s both}
-@-webkit-keyframes unclip {
-0%{-webkit-clip-path:inset(0 0 100% 100%);clip-path:inset(0 0 100% 100%)}
-100%{-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
-@keyframes unclip {
-0%{-webkit-clip-path:inset(0 0 100% 100%);clip-path:inset(0 0 100% 100%)}
-100%{-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+
+.clock-container {
+    position: relative;
+    width: 500px;
 }
-body{font-family:"Nanum Gothic",sans-serif;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}
-body::before{--size:45px;--line:color-mix(in lch,canvasText,transparent 70%);content:'';height:100vh;width:100vw;position:fixed;background:linear-gradient(90deg,var(--line) 1px,transparent 1px var(--size)) 50% 50% / var(--size) var(--size),linear-gradient(var(--line) 1px,transparent 1px var(--size)) 50% 50% / var(--size) var(--size);mask:linear-gradient(-20deg,transparent 50%,white);top:0;transform-style:flat;pointer-events:none;z-index:-1}
-.container{display:flex;flex-direction:column;align-items:center;gap:60px;align-items:center;justify-content:center;margin:0 auto;padding-top:50px}
-.container .clock{display:flex;height:528px;width:528px;border-radius:50%;align-items:center;justify-content:center;background:var(--white-color);border:2px solid #000;position:relative}
-.container .clock:before{content:'';position:absolute;width:var(--border);height:var(--border);border-radius:50%;border:1px solid #000}
-.container .description{font-family: "Nanum Gothic", sans-serif;text-transform:uppercase;text-align:center;font-weight:300}
-.container .description h2{font-size:50px;margin:20px 0 10px 0}
-.container .description p{font-size:15.8px;font-weight:600;margin-top:8px}
-.clock label{position:absolute;inset:-40px;text-align:center;transform:rotate(calc(var(--i) * (360deg / 24)));pointer-events:none}
-.clock label span:before{content:'';position:absolute;inset:-40px;text-align:center;transform:rotate(calc(var(--i)*(360deg / 12)));pointer-events:none}
-.clock label:before{content:'';background:#000;width:1px;height:18px;position:absolute;inset:108px;transform:rotate(135deg) translate(-6px,0)}
-.clock label:after{content:'';background:#000;width:1px;height:198px;position:absolute;inset:150px;transform:rotate(135deg) translate(-70px,0)}
-.clock label:nth-child(9):before, .clock label:nth-child(3):before, .clock label:nth-child(21):before, .clock label:nth-child(25):before{width:3.8px}
-.clock label:nth-child(2):after,.clock label:nth-child(3):after,.clock label:nth-child(4):after,.clock label:nth-child(5):after,.clock label:nth-child(6):after,.clock label:nth-child(7):after,.clock label:nth-child(10):after,.clock label:nth-child(11):after,.clock label:nth-child(13):after,.clock label:nth-child(14):after,.clock label:nth-child(17):after,.clock label:nth-child(19):after,.clock label:nth-child(20):after,.clock label:nth-child(22):after{display:none}
-.clock label:nth-child(15):after{transform:rotate(128deg) translate(-48px, -6px)}
-.clock label:nth-child(16):after{transform:rotate(127deg) translate(-50px, -6px)}
-.clock label span,.indicator::before{font-family: "Nanum Gothic", sans-serif;text-transform:uppercase;}
-.clock label span{display:inline-block;font-size:18px;font-weight:600;color:var(--black-color);transform:rotate(calc(var(--i) * (-360deg / 24)))}
 
-/* Fixed: Các chữ bên trái giờ sẽ xuôi thay vì ngược */
-.clock label p{color:var(--text-color);font-family:sans-serif;font-size:18px;font-weight:600;position:relative;display:block;inset:335px;text-transform:uppercase;letter-spacing:1px;transform:rotate(-82deg);left:-9px;text-align:right}
-
-/* Sửa các label cụ thể để chữ xuôi */
-.clock label:nth-child(2) p{position:absolute;font-size:28px;font-weight:600;transform:rotate(150deg);right:180px;top:168px}
-.clock label:nth-child(5) p{font-size:18px;transform:rotate(98deg)}
-.clock label:nth-child(7) p{transform:rotate(68deg)}
-.clock label:nth-child(10) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(12) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(14) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(16) p{transform:rotate(28deg)}
-.clock label:nth-child(19) p{font-size:28px;transform:rotate(90deg);left:0px}
-.clock label:nth-child(20) p{transform:rotate(-2deg)}
-.clock label:nth-child(21) p{transform:rotate(-12deg)}
-
-.clock label:nth-child(2) p:before{content:'';background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 125' enable-background='new 0 0 100 100' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M87.413,71.907c-0.232-0.029-0.378-0.279-0.52-0.496 c-0.125-0.191-0.256-0.341-0.292-0.521c-0.033-0.166-0.021-0.521-0.167-0.604c-0.163-0.093-0.136,0.406-0.229,0.75 c-0.219,0.562-0.4,0.739-0.801,0.901c-0.146,0.06-0.294-0.017-0.282,0.161c0.007,0.11,0.244,0.075,0.458,0.188 c0.438,0.23,0.411,0.539,0.575,0.956c0.052,0.13,0.133,0.627,0.258,0.627s0.144-0.423,0.167-0.5 c0.139-0.453,0.148-0.911,0.667-1.088c0.031-0.011,0.545-0.163,0.511-0.19C87.56,71.932,87.544,71.923,87.413,71.907z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M83.352,31.975c-0.668-1.22-1.476-2.348-2.343-3.437 c-1.026-1.289-2.189-2.438-3.45-3.493c-0.624-0.521-1.235-1.054-1.936-1.475c-0.468-0.281-0.939-0.555-1.433-0.79 c-0.667-0.317-1.321-0.661-1.991-0.971c-0.871-0.403-1.765-0.749-2.677-1.048c-0.574-0.188-1.153-0.363-1.735-0.528 c-0.912-0.258-1.845-0.399-2.781-0.54c-0.715-0.107-1.421-0.271-2.129-0.418c-0.176-0.036-0.351-0.046-0.527-0.057 c-0.741-0.046-1.478,0.042-2.212,0.098c-0.545,0.042-1.094,0.014-1.635,0.097c-0.874,0.134-1.746,0.288-2.624,0.39 c-0.872,0.101-1.697,0.378-2.531,0.616c-0.81,0.23-1.588,0.558-2.38,0.843c-1.863,0.669-3.568,1.642-5.241,2.676 c-0.778,0.482-1.538,0.996-2.288,1.521c-0.532,0.372-1.059,0.76-1.542,1.191c-0.816,0.727-1.596,1.495-2.391,2.246 c-0.216,0.204-0.385,0.446-0.557,0.687c-0.455,0.636-0.906,1.276-1.383,1.896c-0.478,0.621-0.926,1.261-1.367,1.907 c-0.552,0.81-0.928,1.713-1.368,2.583c-0.408,0.807-0.719,1.652-0.993,2.513c-0.148,0.464-0.288,0.931-0.456,1.388 c-0.494,1.348-0.882,2.724-1.08,4.146c-0.052,0.369-0.228,0.705-0.233,1.08c-0.005,0.428-0.026,0.855-0.083,1.282 c-0.053,0.395-0.088,0.793-0.098,1.192c-0.029,1.153-0.038,2.306-0.063,3.458c-0.016,0.711,0.131,1.412,0.116,2.122 c-0.002,0.1,0.033,0.206,0.073,0.299c0.132,0.307,0.166,0.625,0.148,0.955c-0.01,0.193-0.005,0.386,0.097,0.56 c0.141,0.239,0.164,0.501,0.158,0.771c-0.004,0.176-0.025,0.36,0.087,0.515c0.138,0.19,0.174,0.403,0.167,0.63 c-0.004,0.121,0.021,0.235,0.088,0.338c0.189,0.292,0.396,1.015,0.396,1.015s-0.309,0.268-0.486,0.36 c-0.183,0.095-0.37,0.189-0.538,0.309c-1.438,1.027-2.532,2.36-3.434,3.872c-0.608,1.021-1.05,2.443-1.081,3.63 c-0.015,0.591,0.105,1.191,0.225,1.767c0,0-0.399,0.019-0.691-0.024c-0.912-0.135-1.785,0.026-2.65,0.28 c-0.296,0.087-0.594,0.185-0.871,0.319c-0.882,0.429-1.605,1.081-2.101,1.894c-0.545,0.893-0.902,2.012-0.995,3.051 c-0.04,0.448-0.099,0.418-0.099,0.418s-1.309-0.397-1.812-0.469c-0.553-0.078-1.28-0.001-1.842,0.073 c-0.582,0.077-1.146,0.285-1.67,0.542c-0.609,0.298-1.193,0.641-1.685,1.121c-0.692,0.676-1.237,1.419-1.176,2.456 c0.012,0.206,0.005,0.415-0.008,0.621c-0.012,0.19,0.044,0.343,0.169,0.485c0.167,0.188,0.34,0.376,0.471,0.588 c0.133,0.215,0.292,0.314,0.544,0.291c0.192-0.018,0.397-0.008,0.562,0.092c0.311,0.189,0.647,0.182,0.987,0.186 c0.236,0.003,0.481-0.021,0.692,0.111c0.225,0.141,0.468,0.159,0.723,0.161c1.715,0.01,3.43,0.033,5.144,0.035 c1.343,0.001,2.686-0.026,4.029-0.028c0.383,0,0.766,0.063,1.148,0.071c2.142,0.044,4.284,0.023,6.423,0.171 c0.236,0.017,0.475-0.005,0.708,0.026c1.452,0.19,15.515,0.195,16.054,0.071c0.184-0.042,0.382-0.037,0.574-0.031 c1.212,0.042,2.422-0.046,3.634-0.063c0.132-0.002,0.267-0.016,0.394-0.051c1.386-0.384,3.066-0.087,4.502-0.234 c1.619-0.167,3.267-0.032,4.769-0.671c0.458-0.195,1.079-0.855,1.333-1.334c0.117-0.219,0.071-0.467,0.215-0.672 c0.088-0.125,0.205-0.208,0.365-0.224c0.484-0.046,0.927-0.311,1.428-0.274c0.056,0.004,0.115-0.027,0.172-0.043 c0.776-0.231,1.561-0.435,2.332-0.688c0.985-0.322,1.957-0.677,2.883-1.141c0.619-0.31,1.218-0.66,1.812-1.019 c0.619-0.375,1.223-0.773,1.814-1.184c1.08-0.751,2.003-1.698,3-2.554c0.363-0.311,0.58-0.748,0.92-1.075 c0.672-0.649,1.196-1.412,1.729-2.169c0.498-0.708,0.835-1.504,1.253-2.254c0.162-0.292,0.193-0.646,0.45-0.89 c0.085-0.081,0.093-0.211-0.027-0.316c-0.037,0.023-0.083,0.036-0.104,0.068c-0.409,0.599-0.888,1.142-1.369,1.682 c-0.461,0.519-0.933,1.034-1.494,1.449c-0.771,0.571-1.559,1.121-2.34,1.679c-0.625,0.446-1.249,0.894-1.941,1.235 c-0.859,0.424-1.733,0.81-2.624,1.16c-0.495,0.194-0.989,0.4-1.5,0.539c-1.713,0.465-3.306,0.887-5.106,0.853 c-0.087-0.002-0.178,0.013-0.262,0.038c-0.817,0.24-1.635,0.177-2.455,0.017c-0.13-0.026-0.26-0.063-0.391-0.071 c-0.516-0.033-1.038-0.009-1.514-0.271c-0.06-0.033-0.146-0.019-0.218-0.03c-0.24-0.036-0.611-0.093-0.611-0.093 s-0.133-0.491-0.148-0.729c-0.036-0.563-0.218-1.092-0.386-1.624c-0.143-0.453-0.37-0.864-0.59-1.283 c-0.378-0.718-0.879-1.336-1.507-1.832c-0.589-0.464-1.202-0.902-1.841-1.299c-1.694-1.053-4.323-1.623-6.18-0.768 c-0.313,0.144-0.723,0.367-0.723,0.367s-0.236-0.427-0.435-0.669c-0.423-0.514-0.803-1.043-1.098-1.651 c-0.359-0.741-0.83-1.428-1.252-2.139c-0.514-0.863-0.917-1.777-1.277-2.714c-0.117-0.305-0.167-0.628-0.298-0.922 c-0.188-0.421-0.279-0.873-0.394-1.31c-0.152-0.579-0.37-1.153-0.36-1.77c0.001-0.071-0.027-0.145-0.056-0.213 c-0.111-0.266-0.128-0.544-0.119-0.827c0.019-0.579,0.002-1.151-0.187-1.709c-0.046-0.136-0.036-0.292-0.041-0.439 c-0.032-1.153,0.09-2.302,0.12-3.454c0.001-0.059,0.011-0.117,0.02-0.176c0.132-0.954,0.396-1.878,0.614-2.812 c0.017-0.071,0.039-0.145,0.077-0.206c0.12-0.195,0.152-0.415,0.192-0.632c0.019-0.101,0.012-0.223,0.066-0.299 c0.267-0.37,0.249-0.837,0.456-1.235c0.179-0.345,0.327-0.714,0.5-1.066c0.182-0.369,0.383-0.728,0.577-1.089 c0.229-0.427,0.494-0.832,0.728-1.254c0.187-0.337,0.449-0.621,0.635-0.954c0.261-0.465,0.558-0.906,0.902-1.31 c0.449-0.528,0.932-1.027,1.37-1.566c0.102-0.125,0.219-0.25,0.356-0.331c0.246-0.146,0.441-0.345,0.642-0.541 c0.338-0.33,0.64-0.706,1.012-0.991c0.584-0.446,1.139-0.926,1.742-1.353c0.845-0.598,1.737-1.1,2.652-1.565 c0.218-0.111,0.444-0.252,0.678-0.297c0.362-0.07,0.65-0.359,1.042-0.32c0.046,0.004,0.105-0.051,0.148-0.089 c0.116-0.105,0.252-0.149,0.406-0.15c0.121-0.001,0.236-0.02,0.333-0.1c0.145-0.122,0.315-0.153,0.498-0.153 c0.105,0,0.208-0.022,0.291-0.092c0.157-0.133,0.343-0.157,0.54-0.161c0.086-0.001,0.196-0.004,0.254-0.054 c0.277-0.235,0.604-0.206,0.929-0.205c0.162,0,0.334,0.027,0.465-0.098c0.167-0.159,0.37-0.163,0.58-0.16 c0.325,0.005,0.65,0.005,0.976,0.008c0.164,0.001,0.326-0.006,0.475-0.086c0.256-0.137,0.531-0.167,0.816-0.163 c1.168,0.016,2.336,0.027,3.504,0.04c0.164,0.001,0.338-0.002,0.476,0.083c0.309,0.192,0.644,0.185,0.984,0.188 c0.352,0.003,0.708-0.021,1.021,0.21c0.085,0.062,0.227,0.064,0.343,0.064c0.559-0.001,1.08,0.18,1.587,0.371 c0.44,0.166,0.934,0.169,1.335,0.445c0.022,0.015,0.058,0.011,0.087,0.014c0.4,0.046,0.749,0.252,1.112,0.395 c0.338,0.133,0.681,0.279,1.021,0.39c0.576,0.188,1.116,0.456,1.671,0.684c0.62,0.254,1.186,0.64,1.784,0.949 c1.186,0.614,2.252,1.392,3.236,2.288c0.063,0.058,0.117,0.139,0.224,0.116c0.066-0.062,0.051-0.135,0.02-0.203 C83.867,33.071,83.642,32.505,83.352,31.975z M61.106,73.978c0.019-0.192,0.162-0.65,0.162-0.65s0.38,0.052,0.512,0.083 c2.155,0.5,4.213,0.437,6.072,0.334c1.722-0.095,3.52-0.65,5.167-1.083c0.366-0.096,1.292-0.473,1.625-0.667 c0.483-0.28,1.833-0.792,2.5-1.292c-0.025,0.213-1.385,1.384-1.5,1.458c-0.541,0.349-1.605,1.103-2.958,1.667 c-0.235,0.205-1.393,0.624-1.678,0.737c-0.781,0.31-1.576,0.586-2.374,0.853c-0.449,0.151-0.921,0.208-1.36,0.388 c-0.119,0.048-0.26,0.044-0.392,0.058c-0.294,0.032-0.589,0.059-0.866,0.173c-0.183,0.075-0.872,0.083-0.872,0.083 s-0.113-0.046-0.243-0.223c-0.331-0.453-0.795-0.742-1.249-1.042c-0.511-0.337-1.053-0.592-1.692-0.55 c-0.206,0.013-0.612-0.038-0.817-0.06C60.963,74.224,61.106,73.978,61.106,73.978z M47.624,65.254 c0.133,0.228,0.243,0.47,0.354,0.71c0.068,0.147,0.027,0.293-0.059,0.421c-0.356,0.534-0.607,1.109-0.732,1.74 c-0.014,0.069-0.065,0.131-0.098,0.197c-0.026,0.054-0.042,0.11,0.012,0.224c0.31-0.007,0.542-0.081,0.726-0.38 c0.684-1.12,1.7-1.852,2.865-2.42c0.346-0.168,0.737-0.205,1.056-0.432c0.076-0.054,0.198-0.055,0.3-0.058 c0.251-0.006,0.506-0.072,0.748-0.057c0.611,0.039,1.246-0.052,1.82,0.258c0.064,0.034,0.136,0.058,0.208,0.073 c0.861,0.186,1.628,0.567,2.32,1.107c0.336,0.263,0.723,0.454,1.032,0.76c0.188,0.187,0.379,0.37,0.555,0.569 c0.416,0.471,0.66,1.041,0.959,1.58c0.241,0.435,0.266,0.931,0.464,1.375c0.067,0.149,0.068,0.317,0.067,0.48 c-0.001,0.325-0.004,0.65-0.004,0.976c-0.001,0.399-0.047,0.776-0.188,1.167c-0.129,0.356-0.278,0.711-0.383,1.08 c-0.128,0.455-0.446,0.794-0.759,1.128c-0.348,0.371-0.765,0.679-1.242,0.82c-0.813,0.241-1.642,0.55-2.501,0.145 c-0.065-0.031-0.141-0.06-0.212-0.06c-0.44,0-0.774-0.263-1.137-0.452c-0.675-0.352-1.023-0.953-1.234-1.654 c-0.009-0.029-0.012-0.059-0.021-0.086c-0.101-0.303-0.31-0.588-0.158-0.932c0.245-0.553,0.475-1.109,1.044-1.438 c0.246-0.
-[aria-pressed=false] path:first-of-type,[aria-pressed=true] path:last-of-type{display:block}
-::view-transition-old(root){z-index:-1;-webkit-animation:none;animation:none}
-::view-transition-new(root){z-index:2;-webkit-animation:unclip 1s both;animation:unclip 1s both}
-@-webkit-keyframes unclip {
-0%{-webkit-clip-path:inset(0 0 100% 100%);clip-path:inset(0 0 100% 100%)}
-100%{-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+.title {
+    text-align: center;
+    margin-bottom: 20px;
 }
-@keyframes unclip {
-0%{-webkit-clip-path:inset(0 0 100% 100%);clip-path:inset(0 0 100% 100%)}
-100%{-webkit-clip-path:inset(0 0 0 0);clip-path:inset(0 0 0 0)}
+
+.clock {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    overflow: hidden;
 }
-body{font-family:"Nanum Gothic",sans-serif;margin:0;-webkit-user-select:none;-ms-user-select:none;user-select:none}
-body::before{--size:45px;--line:color-mix(in lch,canvasText,transparent 70%);content:'';height:100vh;width:100vw;position:fixed;background:linear-gradient(90deg,var(--line) 1px,transparent 1px var(--size)) 50% 50% / var(--size) var(--size),linear-gradient(var(--line) 1px,transparent 1px var(--size)) 50% 50% / var(--size) var(--size);mask:linear-gradient(-20deg,transparent 50%,white);top:0;transform-style:flat;pointer-events:none;z-index:-1}
-.container{display:flex;flex-direction:column;align-items:center;gap:60px;align-items:center;justify-content:center;margin:0 auto;padding-top:50px}
-.container .clock{display:flex;height:528px;width:528px;border-radius:50%;align-items:center;justify-content:center;background:var(--white-color);border:2px solid #000;position:relative}
-.container .clock:before{content:'';position:absolute;width:var(--border);height:var(--border);border-radius:50%;border:1px solid #000}
-.container .description{font-family: "Nanum Gothic", sans-serif;text-transform:uppercase;text-align:center;font-weight:300}
-.container .description h2{font-size:50px;margin:20px 0 10px 0}
-.container .description p{font-size:15.8px;font-weight:600;margin-top:8px}
-.clock label{position:absolute;inset:-40px;text-align:center;transform:rotate(calc(var(--i) * (360deg / 24)));pointer-events:none}
-.clock label span:before{content:'';position:absolute;inset:-40px;text-align:center;transform:rotate(calc(var(--i)*(360deg / 12)));pointer-events:none}
-.clock label:before{content:'';background:#000;width:1px;height:18px;position:absolute;inset:108px;transform:rotate(135deg) translate(-6px,0)}
-.clock label:after{content:'';background:#000;width:1px;height:198px;position:absolute;inset:150px;transform:rotate(135deg) translate(-70px,0)}
-.clock label:nth-child(9):before, .clock label:nth-child(3):before, .clock label:nth-child(21):before, .clock label:nth-child(25):before{width:3.8px}
-.clock label:nth-child(2):after,.clock label:nth-child(3):after,.clock label:nth-child(4):after,.clock label:nth-child(5):after,.clock label:nth-child(6):after,.clock label:nth-child(7):after,.clock label:nth-child(10):after,.clock label:nth-child(11):after,.clock label:nth-child(13):after,.clock label:nth-child(14):after,.clock label:nth-child(17):after,.clock label:nth-child(19):after,.clock label:nth-child(20):after,.clock label:nth-child(22):after{display:none}
-.clock label:nth-child(15):after{transform:rotate(128deg) translate(-48px, -6px)}
-.clock label:nth-child(16):after{transform:rotate(127deg) translate(-50px, -6px)}
-.clock label span,.indicator::before{font-family: "Nanum Gothic", sans-serif;text-transform:uppercase;}
-.clock label span{display:inline-block;font-size:18px;font-weight:600;color:var(--black-color);transform:rotate(calc(var(--i) * (-360deg / 24)))}
 
-/* Fixed: Các chữ bên trái giờ sẽ xuôi thay vì ngược */
-.clock label p{color:var(--text-color);font-family:sans-serif;font-size:18px;font-weight:600;position:relative;display:block;inset:335px;text-transform:uppercase;letter-spacing:1px;transform:rotate(-82deg);left:-9px;text-align:right}
+.clock-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+}
 
-/* Sửa các label cụ thể để chữ xuôi */
-.clock label:nth-child(2) p{position:absolute;font-size:28px;font-weight:600;transform:rotate(150deg);right:180px;top:168px}
-.clock label:nth-child(5) p{font-size:18px;transform:rotate(98deg)}
-.clock label:nth-child(7) p{transform:rotate(68deg)}
-.clock label:nth-child(10) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(12) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(14) p{transform:rotate(90deg);left:0px}
-.clock label:nth-child(16) p{transform:rotate(28deg)}
-.clock label:nth-child(19) p{font-size:28px;transform:rotate(90deg);left:0px}
-.clock label:nth-child(20) p{transform:rotate(-2deg)}
-.clock label:nth-child(21) p{transform:rotate(-12deg)}
+.hour-mark {
+    position: absolute;
+    width: 30px;
+    left: calc(50% - 15px);
+    top: 10px;
+    text-align: center;
+    font-size: 14px;
+    transform-origin: center 215px;
+}
 
-.clock label:nth-child(2) p:before{content:'';background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 100 125' enable-background='new 0 0 100 100' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M87.413,71.907c-0.232-0.029-0.378-0.279-0.52-0.496 c-0.125-0.191-0.256-0.341-0.292-0.521c-0.033-0.166-0.021-0.521-0.167-0.604c-0.163-0.093-0.136,0.406-0.229,0.75 c-0.219,0.562-0.4,0.739-0.801,0.901c-0.146,0.06-0.294-0.017-0.282,0.161c0.007,0.11,0.244,0.075,0.458,0.188 c0.438,0.23,0.411,0.539,0.575,0.956c0.052,0.13,0.133,0.627,0.258,0.627s0.144-0.423,0.167-0.5 c0.139-0.453,0.148-0.911,0.667-1.088c0.031-0.011,0.545-0.163,0.511-0.19C87.56,71.932,87.544,71.923,87.413,71.907z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M83.352,31.975c-0.668-1.22-1.476-2.348-2.343-3.437 c-1.026-1.289-2.189-2.438-3.45-3.493c-0.624-0.521-1.235-1.054-1.936-1.475c-0.468-0.281-0.939-0.555-1.433-0.79 c-0.667-0.317-1.321-0.661-1.991-0.971c-0.871-0.403-1.765-0.749-2.677-1.048c-0.574-0.188-1.153-0.363-1.735-0.528 c-0.912-0.258-1.845-0.399-2.781-0.54c-0.715-0.107-1.421-0.271-2.129-0.418c-0.176-0.036-0.351-0.046-0.527-0.057 c-0.741-0.046-1.478,0.042-2.212,0.098c-0.545,0.042-1.094,0.014-1.635,0.097c-0.874,0.134-1.746,0.288-2.624,0.39 c-0.872,0.101-1.697,0.378-2.531,0.616c-0.81,0.23-1.588,0.558-2.38,0.843c-1.863,0.669-3.568,1.642-5.241,2.676 c-0.778,0.482-1.538,0.996-2.288,1.521c-0.532,0.372-1.059,0.76-1.542,1.191c-0.816,0.727-1.596,1.495-2.391,2.246 c-0.216,0.204-0.385,0.446-0.557,0.687c-0.455,0.636-0.906,1.276-1.383,1.896c-0.478,0.621-0.926,1.261-1.367,1.907 c-0.552,0.81-0.928,1.713-1.368,2.583c-0.408,0.807-0.719,1.652-0.993,2.513c-0.148,0.464-0.288,0.931-0.456,1.388 c-0.494,1.348-0.882,2.724-1.08,4.146c-0.052,0.369-0.228,0.705-0.233,1.08c-0.005,0.428-0.026,0.855-0.083,1.282 c-0.053,0.395-0.088,0.793-0.098,1.192c-0.029,1.153-0.038,2.306-0.063,3.458c-0.016,0.711,0.131,1.412,0.116,2.122 c-0.002,0.1,0.033,0.206,0.073,0.299c0.132,0.307,0.166,0.625,0.148,0.955c-0.01,0.193-0.005,0.386,0.097,0.56 c0.141,0.239,0.164,0.501,0.158,0.771c-0.004,0.176-0.025,0.36,0.087,0.515c0.138,0.19,0.174,0.403,0.167,0.63 c-0.004,0.121,0.021,0.235,0.088,0.338c0.189,0.292,0.396,1.015,0.396,1.015s-0.309,0.268-0.486,0.36 c-0.183,0.095-0.37,0.189-0.538,0.309c-1.438,1.027-2.532,2.36-3.434,3.872c-0.608,1.021-1.05,2.443-1.081,3.63 c-0.015,0.591,0.105,1.191,0.225,1.767c0,0-0.399,0.019-0.691-0.024c-0.912-0.135-1.785,0.026-2.65,0.28 c-0.296,0.087-0.594,0.185-0.871,0.319c-0.882,0.429-1.605,1.081-2.101,1.894c-0.545,0.893-0.902,2.012-0.995,3.051 c-0.04,0.448-0.099,0.418-0.099,0.418s-1.309-0.397-1.812-0.469c-0.553-0.078-1.28-0.001-1.842,0.073 c-0.582,0.077-1.146,0.285-1.67,0.542c-0.609,0.298-1.193,0.641-1.685,1.121c-0.692,0.676-1.237,1.419-1.176,2.456 c0.012,0.206,0.005,0.415-0.008,0.621c-0.012,0.19,0.044,0.343,0.169,0.485c0.167,0.188,0.34,0.376,0.471,0.588 c0.133,0.215,0.292,0.314,0.544,0.291c0.192-0.018,0.397-0.008,0.562,0.092c0.311,0.189,0.647,0.182,0.987,0.186 c0.236,0.003,0.481-0.021,0.692,0.111c0.225,0.141,0.468,0.159,0.723,0.161c1.715,0.01,3.43,0.033,5.144,0.035 c1.343,0.001,2.686-0.026,4.029-0.028c0.383,0,0.766,0.063,1.148,0.071c2.142,0.044,4.284,0.023,6.423,0.171 c0.236,0.017,0.475-0.005,0.708,0.026c1.452,0.19,15.515,0.195,16.054,0.071c0.184-0.042,0.382-0.037,0.574-0.031 c1.212,0.042,2.422-0.046,3.634-0.063c0.132-0.002,0.267-0.016,0.394-0.051c1.386-0.384,3.066-0.087,4.502-0.234 c1.619-0.167,3.267-0.032,4.769-0.671c0.458-0.195,1.079-0.855,1.333-1.334c0.117-0.219,0.071-0.467,0.215-0.672 c0.088-0.125,0.205-0.208,0.365-0.224c0.484-0.046,0.927-0.311,1.428-0.274c0.056,0.004,0.115-0.027,0.172-0.043 c0.776-0.231,1.561-0.435,2.332-0.688c0.985-0.322,1.957-0.677,2.883-1.141c0.619-0.31,1.218-0.66,1.812-1.019 c0.619-0.375,1.223-0.773,1.814-1.184c1.08-0.751,2.003-1.698,3-2.554c0.363-0.311,0.58-0.748,0.92-1.075 c0.672-0.649,1.196-1.412,1.729-2.169c0.498-0.708,0.835-1.504,1.253-2.254c0.162-0.292,0.193-0.646,0.45-0.89 c0.085-0.081,0.093-0.211-0.027-0.316c-0.037,0.023-0.083,0.036-0.104,0.068c-0.409,0.599-0.888,1.142-1.369,1.682 c-0.461,0.519-0.933,1.034-1.494,1.449c-0.771,0.571-1.559,1.121-2.34,1.679c-0.625,0.446-1.249,0.894-1.941,1.235 c-0.859,0.424-1.733,0.81-2.624,1.16c-0.495,0.194-0.989,0.4-1.5,0.539c-1.713,0.465-3.306,0.887-5.106,0.853 c-0.087-0.002-0.178,0.013-0.262,0.038c-0.817,0.24-1.635,0.177-2.455,0.017c-0.13-0.026-0.26-0.063-0.391-0.071 c-0.516-0.033-1.038-0.009-1.514-0.271c-0.06-0.033-0.146-0.019-0.218-0.03c-0.24-0.036-0.611-0.093-0.611-0.093 s-0.133-0.491-0.148-0.729c-0.036-0.563-0.218-1.092-0.386-1.624c-0.143-0.453-0.37-0.864-0.59-1.283 c-0.378-0.718-0.879-1.336-1.507-1.832c-0.589-0.464-1.202-0.902-1.841-1.299c-1.694-1.053-4.323-1.623-6.18-0.768 c-0.313,0.144-0.723,0.367-0.723,0.367s-0.236-0.427-0.435-0.669c-0.423-0.514-0.803-1.043-1.098-1.651 c-0.359-0.741-0.83-1.428-1.252-2.139c-0.514-0.863-0.917-1.777-1.277-2.714c-0.117-0.305-0.167-0.628-0.298-0.922 c-0.188-0.421-0.279-0.873-0.394-1.31c-0.152-0.579-0.37-1.153-0.36-1.77c0.001-0.071-0.027-0.145-0.056-0.213 c-0.111-0.266-0.128-0.544-0.119-0.827c0.019-0.579,0.002-1.151-0.187-1.709c-0.046-0.136-0.036-0.292-0.041-0.439 c-0.032-1.153,0.09-2.302,0.12-3.454c0.001-0.059,0.011-0.117,0.02-0.176c0.132-0.954,0.396-1.878,0.614-2.812 c0.017-0.071,0.039-0.145,0.077-0.206c0.12-0.195,0.152-0.415,0.192-0.632c0.019-0.101,0.012-0.223,0.066-0.299 c0.267-0.37,0.249-0.837,0.456-1.235c0.179-0.345,0.327-0.714,0.5-1.066c0.182-0.369,0.383-0.728,0.577-1.089 c0.229-0.427,0.494-0.832,0.728-1.254c0.187-0.337,0.449-0.621,0.635-0.954c0.261-0.465,0.558-0.906,0.902-1.31 c0.449-0.528,0.932-1.027,1.37-1.566c0.102-0.125,0.219-0.25,0.356-0.331c0.246-0.146,0.441-0.345,0.642-0.541 c0.338-0.33,0.64-0.706,1.012-0.991c0.584-0.446,1.139-0.926,1.742-1.353c0.845-0.598,1.737-1.1,2.652-1.565 c0.218-0.111,0.444-0.252,0.678-0.297c0.362-0.07,0.65-0.359,1.042-0.32c0.046,0.004,0.105-0.051,0.148-0.089 c0.116-0.105,0.252-0.149,0.406-0.15c0.121-0.001,0.236-0.02,0.333-0.1c0.145-0.122,0.315-0.153,0.498-0.153 c0.105,0,0.208-0.022,0.291-0.092c0.157-0.133,0.343-0.157,0.54-0.161c0.086-0.001,0.196-0.004,0.254-0.054 c0.277-0.235,0.604-0.206,0.929-0.205c0.162,0,0.334,0.027,0.465-0.098c0.167-0.159,0.37-0.163,0.58-0.16 c0.325,0.005,0.65,0.005,0.976,0.008c0.164,0.001,0.326-0.006,0.475-0.086c0.256-0.137,0.531-0.167,0.816-0.163 c1.168,0.016,2.336,0.027,3.504,0.04c0.164,0.001,0.338-0.002,0.476,0.083c0.309,0.192,0.644,0.185,0.984,0.188 c0.352,0.003,0.708-0.021,1.021,0.21c0.085,0.062,0.227,0.064,0.343,0.064c0.559-0.001,1.08,0.18,1.587,0.371 c0.44,0.166,0.934,0.169,1.335,0.445c0.022,0.015,0.058,0.011,0.087,0.014c0.4,0.046,0.749,0.252,1.112,0.395 c0.338,0.133,0.681,0.279,1.021,0.39c0.576,0.188,1.116,0.456,1.671,0.684c0.62,0.254,1.186,0.64,1.784,0.949 c1.186,0.614,2.252,1.392,3.236,2.288c0.063,0.058,0.117,0.139,0.224,0.116c0.066-0.062,0.051-0.135,0.02-0.203 C83.867,33.071,83.642,32.505,83.352,31.975z M61.106,73.978c0.019-0.192,0.162-0.65,0.162-0.65s0.38,0.052,0.512,0.083 c2.155,0.5,4.213,0.437,6.072,0.334c1.722-0.095,3.52-0.65,5.167-1.083c0.366-0.096,1.292-0.473,1.625-0.667 c0.483-0.28,1.833-0.792,2.5-1.292c-0.025,0.213-1.385,1.384-1.5,1.458c-0.541,0.349-1.605,1.103-2.958,1.667 c-0.235,0.205-1.393,0.624-1.678,0.737c-0.781,0.31-1.576,0.586-2.374,0.853c-0.449,0.151-0.921,0.208-1.36,0.388 c-0.119,0.048-0.26,0.044-0.392,0.058c-0.294,0.032-0.589,0.059-0.866,0.173c-0.183,0.075-0.872,0.083-0.872,0.083 s-0.113-0.046-0.243-0.223c-0.331-0.453-0.795-0.742-1.249-1.042c-0.511-0.337-1.053-0.592-1.692-0.55 c-0.206,0.013-0.612-0.038-0.817-0.06C60.963,74.224,61.106,73.978,61.106,73.978z M47.624,65.254 c0.133,0.228,0.243,0.47,0.354,0.71c0.068,0.147,0.027,0.293-0.059,0.421c-0.356,0.534-0.607,1.109-0.732,1.74 c-0.014,0.069-0.065,0.131-0.098,0.197c-0.026,0.054-0.042,0.11,0.012,0.224c0.31-0.007,0.542-0.081,0.726-0.38 c0.684-1.12,1.7-1.852,2.865-2.42c0.346-0.168,0.737-0.205,1.056-0.432c0.076-0.054,0.198-0.055,0.3-0.058 c0.251-0.006,0.506-0.072,0.748-0.057c0.611,0.039,1.246-0.052,1.82,0.258c0.064,0.034,0.136,0.058,0.208,0.073 c0.861,0.186,1.628,0.567,2.32,1.107c0.336,0.263,0.723,0.454,1.032,0.76c0.188,0.187,0.379,0.37,0.555,0.569 c0.416,0.471,0.66,1.041,0.959,1.58c0.241,0.435,0.266,0.931,0.464,1.375c0.067,0.149,0.068,0.317,0.067,0.48 c-0.001,0.325-0.004,0.65-0.004,0.976c-0.001,0.399-0.047,0.776-0.188,1.167c-0.129,0.356-0.278,0.711-0.383,1.08 c-0.128,0.455-0.446,0.794-0.759,1.128c-0.348,0.371-0.765,0.679-1.242,0.82c-0.813,0.241-1.642,0.55-2.501,0.145 c-0.065-0.031-0.141-0.06-0.212-0.06c-0.44,0-0.774-0.263-1.137-0.452c-0.675-0.352-1.023-0.953-1.234-1.654 c-0.009-0.029-0.012-0.059-0.021-0.086c-0.101-0.303-0.31-0.588-0.158-0.932c0.245-0.553,0.475-1.109,1.044-1.438 c0.246-0.
+.moon {
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    transform: translateX(-50%);
+}
+
+.divider {
+    position: absolute;
+    width: 1px;
+    height: 190px;
+    background-color: #969696;
+    transform-origin: bottom center;
+    bottom: 50%;
+    left: calc(50% - 0.5px);
+}
+
+.divider::after {
+    content: attr(data-activity);
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    background-color: black;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 25%;
+    transform: translateX(-50%) rotate(150deg);
+}
+
+.minute-hand {
+    width: 2px;
+    height: 40%;
+    transform: translateX(-50%) rotate(30deg);
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: gold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.unit {
+    text-align: right;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    text-align: center;
+    transform: rotate(calc(15deg * var(--i))) translateY(var(--label-offset)) rotate(var(--label-rotation));
+    white-space: nowrap;
+    font-size: 12px;
+    color: black;
+    z-index: 1;
+    /* Ensure labels are on top of lines */
+}
+
+.center {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
